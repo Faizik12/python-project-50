@@ -1,4 +1,4 @@
-name: Checking correctness
+name: checking correctness
 
 on: - push
 
