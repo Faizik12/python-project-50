@@ -1,6 +1,6 @@
-from gendiff.generate_diff import make_right
-from gendiff.generate_diff import get_string
-from gendiff.generate_diff import generate_diff
+from gendiff.parser import make_right
+from gendiff.parser import get_string
+from gendiff.parser import generate_diff
 
 
 def test_make_right():
@@ -29,8 +29,15 @@ def test_get_string():
     assert get_string('verbose', data_1, data_2) == f'  + verbose: true\n'
 
 
-def test_generate_diff():
+def test_generate_diff_with_json():
     with open('tests/fixtures/simple_result', 'r') as file:
         result = file.read()
     assert generate_diff('tests/fixtures/file1.json',
                          'tests/fixtures/file2.json') == result
+
+
+def test_generate_diff_with_yml():
+    with open('tests/fixtures/simple_result', 'r') as file:
+        result = file.read()
+    assert generate_diff('tests/fixtures/file3.yml',
+                         'tests/fixtures/file4.yml') == result
