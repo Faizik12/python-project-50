@@ -3,4 +3,4 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/170c4b690b93d475d5eb/maintainability)](https://codeclimate.com/github/Faizik12/python-project-50/maintainability)
 
-![example workflow](https://github.com/Faizik12/python-project-49/actions/workflows/Сhecking-correctness.yml/badge.svg)
+![example workflow](https://github.com/Faizik12/python-project-49/actions/workflows/checking-correctness.yml/badge.svg)
