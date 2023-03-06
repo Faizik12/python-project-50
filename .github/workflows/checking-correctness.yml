@@ -1,6 +1,7 @@
 name: checking correctness
 
-on: - push
+on:
+  - push
 
 jobs:
   build:
