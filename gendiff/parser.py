@@ -27,32 +27,34 @@ def make_correctly(data, depth):
     return f' {data}\n' if data is not None else ' null\n'
 
 
-def stylish(diff):
+def stylish(diff): # noqa C901
 
     def walk(diff, depth):
         keys = get_keys(diff)
         result = ''
-        indent = depth * INDENTATION_LEVEL - OFFSET_LEFT
+        count_space = depth * INDENTATION_LEVEL - OFFSET_LEFT
+        indent = count_space * " "
         for key in keys:
             status = get_status(diff, key)
             if status == 'correct':
                 value = get_value(diff, key)
-                result += f'{indent * " "}  {key}:{make_correctly(value, depth)}'
+                result += f'{indent}  {key}:{make_correctly(value, depth)}'
             elif status == 'changed':
                 old_value, new_value = get_value(diff, key)
-                result += f'{indent * " "}- {key}:{make_correctly(old_value, depth)}'
-                result += f'{indent * " "}+ {key}:{make_correctly(new_value, depth)}'
+                result += f'{indent}- {key}:{make_correctly(old_value, depth)}'
+                result += f'{indent}+ {key}:{make_correctly(new_value, depth)}'
             elif status == 'deleted':
                 value = get_value(diff, key)
-                result += f'{indent * " "}- {key}:{make_correctly(value, depth)}'
+                result += f'{indent}- {key}:{make_correctly(value, depth)}'
             elif status == 'added':
                 value = get_value(diff, key)
-                result += f'{indent * " "}+ {key}:{make_correctly(value, depth)}'
+                result += f'{indent}+ {key}:{make_correctly(value, depth)}'
             elif status == 'node':
                 child = get_value(diff, key)
-                result += f'{indent * " "}  {key}: {"{"}\n'
+                result += f'{indent}  {key}: {"{"}\n'
                 result += walk(child, depth + 1)
-        return result + ('}' if depth == 1 else f'{(indent - 2) * " "}{"}"}\n')
+        return result + ('}' if depth == 1
+                         else f'{(count_space - 2) * " "}{"}"}\n')
 
     return '{\n' + walk(diff, 1)
 

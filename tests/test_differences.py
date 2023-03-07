@@ -1,6 +1,7 @@
 from gendiff.differences import make_diff, get_status, get_keys, get_value
 import pytest
 
+
 @pytest.fixture
 def simple_diff():
     return {
@@ -155,8 +156,8 @@ def test_get_keys(simple_diff):
 def test_get_value(simple_diff, complex_diff):
     assert get_value(simple_diff, 'host') == 'hexlet.io'
     assert get_value(simple_diff, 'timeout') == (50, 20)
-    assert get_value(simple_diff, 'follow') == False
-    assert get_value(simple_diff, 'verbose') == True
+    assert get_value(simple_diff, 'follow') is False
+    assert get_value(simple_diff, 'verbose') is True
     assert get_value(complex_diff, 'group1') == {
                 'status': 'node',
                 'sorted keys': ['baz', 'foo', 'nest'],
