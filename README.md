@@ -6,10 +6,19 @@
 
 ## Usage
 
-Generating differences in json files
+Generating differences in flat json files
+
 
 [![asciicast](https://asciinema.org/a/2PseMvGb6kxoew7VEEq7xWs1P.svg)](https://asciinema.org/a/2PseMvGb6kxoew7VEEq7xWs1P)
 
-Generating differences in yaml files
+Generating differences in flat yaml files
 
 [![asciicast](https://asciinema.org/a/2i11hG7xlyAqcjX7XhitzwgvH.svg)](https://asciinema.org/a/2i11hG7xlyAqcjX7XhitzwgvH)
+
+Generating differences in complex json files
+
+[![asciicast](https://asciinema.org/a/wyqd6zVE8HjUFbG9710JvFyLj.svg)](https://asciinema.org/a/wyqd6zVE8HjUFbG9710JvFyLj)
+
+Generating differences in complex yaml files
+
+[![asciicast](https://asciinema.org/a/wyqd6zVE8HjUFbG9710JvFyLj.svg)](https://asciinema.org/a/wyqd6zVE8HjUFbG9710JvFyLj)
