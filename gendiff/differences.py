@@ -3,7 +3,8 @@ def make_diff(data_1, data_2): # noqa C901
     sorted_keys = sorted(all_keys)
     result = {'status': 'node',
               'sorted keys': sorted_keys,
-              'children': {}}
+              'children': {},
+              }
     for key in sorted_keys:
         if key in data_1:
             value_1 = data_1.get(key)
@@ -29,7 +30,7 @@ def make_diff(data_1, data_2): # noqa C901
         elif key in data_2:
             result['children'][key] = {
                 'status': 'added',
-                'new value': data_2.get(key)
+                'new value': data_2.get(key),
             }
     return result
 
