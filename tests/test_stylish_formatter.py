@@ -7,7 +7,7 @@ def test_make_correctly():
     assert make_correct(False, 1) == ' false\n'
     assert make_correct('Something', 1) == ' Something\n'
     assert make_correct(100, 1) == ' 100\n'
-    assert make_correct('', 1) == '\n'
+    assert make_correct('', 1) == ' \n'
     assert make_correct(None, 1) == ' null\n'
     assert make_correct([1, 2, 3], 1) == ' [1, 2, 3]\n'
     assert make_correct({'key': 'value'}, 1) == ' {\n        key: value\n    }\n'
