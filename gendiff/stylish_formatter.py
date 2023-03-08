@@ -19,8 +19,6 @@ def make_correct(data, depth):
                 result += f'{indent * " "}{key}:'
                 result += make_correct(value, depth + 1)
         return result + f'{depth * INDENTATION_LEVEL * " "}{"}"}\n'
-    elif data == '':
-        return '\n'
     return f' {data}\n' if data is not None else ' null\n'
 
 
