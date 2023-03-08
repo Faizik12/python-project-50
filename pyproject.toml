@@ -1,10 +1,20 @@
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = ""
+description = "Difference Calculator is a program that determines the difference between two data structures."
 authors = ["Faizik12 <zerg9119@gmail.com>"]
 readme = "README.md"
 packages = [{include = "gendiff"}]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Students",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Developers",
+    "Operating System :: Linux",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython"
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"

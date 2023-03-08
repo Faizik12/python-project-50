@@ -9,7 +9,7 @@ def make_correct(value):
     elif value is None:
         return 'null'
     elif isinstance(value, str):
-        return f"'{value}'"
+        return f'\'{value}\''
     return f'{value}'
 
 def plain(diff): # noqa C901
@@ -22,16 +22,16 @@ def plain(diff): # noqa C901
             status = get_status(diff, key)
             if status == 'changed':
                 old_value, new_value = get_value(diff, key)
-                result += f"Property '{current_path}' was updated. From "\
-                          f"{make_correct(old_value)} "\
-                          f"to {make_correct(new_value)}\n"
+                result += f'Property \'{current_path}\' was updated. From '\
+                          f'{make_correct(old_value)} '\
+                          f'to {make_correct(new_value)}\n'
             elif status == 'added':
                 value = get_value(diff, key)
-                result += f"Property '{current_path}' was added with value: "\
-                          f"{make_correct(value)}\n"
+                result += f'Property \'{current_path}\' was added with value: '\
+                          f'{make_correct(value)}\n'
             elif status == 'deleted':
                 value = get_value(diff, key)
-                result += f"Property '{current_path}' was removed\n"
+                result += f'Property \'{current_path}\' was removed\n'
             elif status == 'node':
                 children = get_value(diff, key)
                 result += walk(children, current_path)

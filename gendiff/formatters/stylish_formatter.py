@@ -28,7 +28,7 @@ def stylish(diff): # noqa C901
         keys = get_keys(diff)
         result = ''
         count_space = depth * INDENTATION_LEVEL - OFFSET_LEFT
-        indent = count_space * " "
+        indent = count_space * ' '
         for key in keys:
             status = get_status(diff, key)
             if status == 'correct':

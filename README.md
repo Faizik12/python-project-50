@@ -6,8 +6,7 @@
 
 ## Description
 
-The difference calculator is able to work with json and yaml files of varying degrees of nesting.
-It can also output the difference in different formats using the -f, --format option:
+Difference Calculator is a program that determines the difference between two data structures. The difference calculator is able to work with json and yaml files of varying degrees of nesting. It can also output the difference in different formats using the -f, --format option:
 - "stylish" - Outputs the difference in the form of all values and their modified counterparts. Is the default option.
 - "plain" - Outputs only changed values with paths to them and operations on them.
 - "json" - Outputs the difference in json format
