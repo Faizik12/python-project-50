@@ -1,4 +1,4 @@
-from gendiff.plain_formatter import make_correct, plain
+from gendiff.formatters.plain_formatter import make_correct, plain
 from tests.test_differences import complex_diff # noqa F401
 
 

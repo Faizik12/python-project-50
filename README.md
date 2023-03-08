@@ -4,6 +4,20 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/170c4b690b93d475d5eb/maintainability)](https://codeclimate.com/github/Faizik12/python-project-50/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/170c4b690b93d475d5eb/test_coverage)](https://codeclimate.com/github/Faizik12/python-project-50/test_coverage)
 
+## Description
+
+The difference calculator is able to work with json and yaml files of varying degrees of nesting.
+It can also output the difference in different formats using the -f, --format option:
+- "stylish" - Outputs the difference in the form of all values and their modified counterparts. Is the default option.
+- "plain" - Outputs only changed values with paths to them and operations on them.
+- "json" - Outputs the difference in json format
+
+## Instalation
+
+git clone git@github.com:Faizik12/python-project-50.git
+
+make setup
+
 ## Usage
 
 Calculating differences in flat json files

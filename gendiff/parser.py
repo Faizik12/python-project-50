@@ -1,8 +1,8 @@
 import yaml
 import json
 from gendiff.differences import make_diff
-from gendiff.stylish_formatter import stylish
-from gendiff.plain_formatter import plain
+from gendiff.formatters.stylish_formatter import stylish
+from gendiff.formatters.plain_formatter import plain
 from yaml.loader import SafeLoader
 
 
