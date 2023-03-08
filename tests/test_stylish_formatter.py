@@ -1,4 +1,4 @@
-from gendiff.stylish import make_correct, stylish
+from gendiff.stylish_formatter import make_correct, stylish
 from tests.test_differences import simple_diff, complex_diff
 
 

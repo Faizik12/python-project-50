@@ -34,3 +34,10 @@ def test_generate_diff_with_plain_formate():
         result = file.read()
     assert generate_diff('tests/fixtures/complex_file1.json',
                          'tests/fixtures/complex_file2.json', 'plain') == result
+
+
+def test_generate_diff_with_json_formate():
+    with open('tests/fixtures/json_result.json', 'r') as file:
+        result = file.read()
+    assert generate_diff('tests/fixtures/complex_file1.json',
+                         'tests/fixtures/complex_file2.json', 'json') == result

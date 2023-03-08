@@ -1,4 +1,4 @@
-from gendiff.plain import make_correct, plain
+from gendiff.plain_formatter import make_correct, plain
 from tests.test_differences import simple_diff, complex_diff
 
 

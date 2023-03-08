@@ -1,0 +1,129 @@
+{
+    "status": "node",
+    "sorted keys": [
+        "common",
+        "group1",
+        "group2",
+        "group3"
+    ],
+    "children": {
+        "common": {
+            "status": "node",
+            "sorted keys": [
+                "follow",
+                "setting1",
+                "setting2",
+                "setting3",
+                "setting4",
+                "setting5",
+                "setting6"
+            ],
+            "children": {
+                "follow": {
+                    "status": "added",
+                    "new value": false
+                },
+                "setting1": {
+                    "status": "correct",
+                    "correct value": "Value 1"
+                },
+                "setting2": {
+                    "status": "deleted",
+                    "correct value": 200
+                },
+                "setting3": {
+                    "status": "changed",
+                    "old value": true,
+                    "new value": null
+                },
+                "setting4": {
+                    "status": "added",
+                    "new value": "blah blah"
+                },
+                "setting5": {
+                    "status": "added",
+                    "new value": {
+                        "key5": "value5"
+                    }
+                },
+                "setting6": {
+                    "status": "node",
+                    "sorted keys": [
+                        "doge",
+                        "key",
+                        "ops"
+                    ],
+                    "children": {
+                        "doge": {
+                            "status": "node",
+                            "sorted keys": [
+                                "wow"
+                            ],
+                            "children": {
+                                "wow": {
+                                    "status": "changed",
+                                    "old value": "",
+                                    "new value": "so much"
+                                }
+                            }
+                        },
+                        "key": {
+                            "status": "correct",
+                            "correct value": "value"
+                        },
+                        "ops": {
+                            "status": "added",
+                            "new value": "vops"
+                        }
+                    }
+                }
+            }
+        },
+        "group1": {
+            "status": "node",
+            "sorted keys": [
+                "baz",
+                "foo",
+                "nest"
+            ],
+            "children": {
+                "baz": {
+                    "status": "changed",
+                    "old value": "bas",
+                    "new value": "bars"
+                },
+                "foo": {
+                    "status": "correct",
+                    "correct value": "bar"
+                },
+                "nest": {
+                    "status": "changed",
+                    "old value": {
+                        "key": "value"
+                    },
+                    "new value": "str"
+                }
+            }
+        },
+        "group2": {
+            "status": "deleted",
+            "correct value": {
+                "abc": 12345,
+                "deep": {
+                    "id": 45
+                }
+            }
+        },
+        "group3": {
+            "status": "added",
+            "new value": {
+                "deep": {
+                    "id": {
+                        "number": 45
+                    }
+                },
+                "fee": 100500
+            }
+        }
+    }
+}

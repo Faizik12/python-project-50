@@ -1,8 +1,8 @@
 import yaml
 import json
 from gendiff.differences import make_diff
-from gendiff.stylish import stylish
-from gendiff.plain import plain
+from gendiff.stylish_formatter import stylish
+from gendiff.plain_formatter import plain
 from yaml.loader import SafeLoader
 
 
@@ -20,5 +20,7 @@ def generate_diff(filepath_1, filepath_2, formatter='stylish'):
     diff = make_diff(data_1, data_2)
     if formatter == 'stylish':
         return stylish(diff)
-    else:
+    elif formatter == 'plain':
         return plain(diff)
+    elif formatter == 'json':
+        return json.dumps(diff, indent=4)
