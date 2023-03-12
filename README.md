@@ -40,6 +40,6 @@ Displaying differences in a flat format
 
 [![asciicast](https://asciinema.org/a/aCLTcSGKI0CPIoM8E12htR0ul.svg)](https://asciinema.org/a/aCLTcSGKI0CPIoM8E12htR0ul)
 
-Displaying differences in flat format
+Displaying differences in json format
 
 [![asciicast](https://asciinema.org/a/BzUNJlM2cIPZbw5zj1kn9ZlzG.svg)](https://asciinema.org/a/BzUNJlM2cIPZbw5zj1kn9ZlzG)
