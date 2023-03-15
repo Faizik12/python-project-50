@@ -46,5 +46,4 @@ def generate_diff(filepath_1, filepath_2, formatter='stylish'):
     elif formatter == 'plain':
         return plain(diff)
     elif formatter == 'json':
-        print(json_formatter(diff))
         return json_formatter(diff)
