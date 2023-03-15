@@ -1,4 +1,28 @@
-from gendiff.differences import get_keys, get_status, get_value
+def get_status(diff, key):
+    if 'children' in diff['children'][key]:
+        return 'node'
+    value_1 = diff['children'][key]['old_value']
+    value_2 = diff['children'][key]['new_value']
+    if value_1 == '|Empty|':
+        return 'added'
+    elif value_2 == '|Empty|':
+        return 'deleted'
+    elif value_1 == value_2:
+        return 'correct'
+    elif value_1 != value_2:
+        return 'changed'
+
+
+def get_keys(diff):
+    return diff['sorted_keys']
+
+
+def get_value(diff, key):
+    if get_status(diff, key) == 'node':
+        return diff['children'][key]
+    else:
+        return (diff['children'][key]['old_value'],
+                diff['children'][key]['new_value'])
 
 
 def make_correct(value):
@@ -12,7 +36,22 @@ def make_correct(value):
         return f'\'{value}\''
     return f'{value}'
 
-def plain(diff): # noqa C901
+
+def get_string(status, old_value, new_value, path):
+    if status == 'changed':
+        return f'Property \'{path}\' was updated. From '\
+               f'{make_correct(old_value)} '\
+               f'to {make_correct(new_value)}\n'
+    elif status == 'added':
+        return f'Property \'{path}\' was added with value: '\
+               f'{make_correct(new_value)}\n'
+    elif status == 'deleted':
+        return f'Property \'{path}\' was removed\n'
+    else:
+        return ''
+
+
+def plain(diff):
 
     def walk(diff, path=''):
         keys = get_keys(diff)
@@ -20,21 +59,12 @@ def plain(diff): # noqa C901
         for key in keys:
             current_path = f'{path}.{key}' if path else f'{key}'
             status = get_status(diff, key)
-            if status == 'changed':
-                old_value, new_value = get_value(diff, key)
-                result += f'Property \'{current_path}\' was updated. From '\
-                          f'{make_correct(old_value)} '\
-                          f'to {make_correct(new_value)}\n'
-            elif status == 'added':
-                value = get_value(diff, key)
-                result += f'Property \'{current_path}\' was added with value: '\
-                          f'{make_correct(value)}\n'
-            elif status == 'deleted':
-                value = get_value(diff, key)
-                result += f'Property \'{current_path}\' was removed\n'
-            elif status == 'node':
+            old_value, new_value = get_value(diff, key)
+            if status == 'node':
                 children = get_value(diff, key)
                 result += walk(children, current_path)
+                continue
+            result += get_string(status, old_value, new_value, current_path)
         return result
 
     return walk(diff)[:-1]

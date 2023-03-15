@@ -5,6 +5,7 @@ description = "Difference Calculator is a program that determines the difference
 authors = ["Faizik12 <zerg9119@gmail.com>"]
 readme = "README.md"
 packages = [{include = "gendiff"}]
+repository = "https://github.com/python-poetry/poetry"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Students",
