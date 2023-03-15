@@ -4,13 +4,14 @@ def get_status(diff, key):
     value_1 = diff['children'][key]['old_value']
     value_2 = diff['children'][key]['new_value']
     if value_1 == '|Empty|':
-        return 'added'
+        status = 'added'
     elif value_2 == '|Empty|':
-        return 'deleted'
+        status = 'deleted'
     elif value_1 == value_2:
-        return 'correct'
+        status = 'correct'
     elif value_1 != value_2:
-        return 'changed'
+        status = 'changed'
+    return status
 
 
 def get_keys(diff):
@@ -39,16 +40,17 @@ def make_correct(value):
 
 def get_string(status, old_value, new_value, path):
     if status == 'changed':
-        return f'Property \'{path}\' was updated. From '\
-               f'{make_correct(old_value)} '\
-               f'to {make_correct(new_value)}\n'
+        result = f'Property \'{path}\' was updated. From '\
+                 f'{make_correct(old_value)} '\
+                 f'to {make_correct(new_value)}\n'
     elif status == 'added':
-        return f'Property \'{path}\' was added with value: '\
-               f'{make_correct(new_value)}\n'
+        result = f'Property \'{path}\' was added with value: '\
+                 f'{make_correct(new_value)}\n'
     elif status == 'deleted':
-        return f'Property \'{path}\' was removed\n'
+        result = f'Property \'{path}\' was removed\n'
     else:
-        return ''
+        result = ''
+    return result
 
 
 def plain(diff):

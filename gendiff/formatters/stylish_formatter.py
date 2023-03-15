@@ -8,13 +8,14 @@ def get_status(diff, key):
     value_1 = diff['children'][key]['old_value']
     value_2 = diff['children'][key]['new_value']
     if value_1 == '|Empty|':
-        return 'added'
+        status = 'added'
     elif value_2 == '|Empty|':
-        return 'deleted'
+        status = 'deleted'
     elif value_1 == value_2:
-        return 'correct'
+        status = 'correct'
     elif value_1 != value_2:
-        return 'changed'
+        status = 'changed'
+    return status
 
 
 def get_keys(diff):
