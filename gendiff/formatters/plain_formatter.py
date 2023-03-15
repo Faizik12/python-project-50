@@ -28,14 +28,16 @@ def get_value(diff, key):
 
 def make_correct(value):
     if isinstance(value, bool):
-        return 'true' if value else 'false'
+        result = 'true' if value else 'false'
     elif isinstance(value, dict):
-        return '[complex value]'
+        result = '[complex value]'
     elif value is None:
-        return 'null'
+        result = 'null'
     elif isinstance(value, str):
-        return f'\'{value}\''
-    return f'{value}'
+        result = f'\'{value}\''
+    else:
+        result = f'{value}'
+    return result
 
 
 def get_string(status, old_value, new_value, path):
