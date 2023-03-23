@@ -1,32 +1,33 @@
 from gendiff.parser import generate_diff
+import pytest
 
 
-def test_generate_diff_with_simple_json():
+@pytest.mark.parametrize(
+    'filepath_1',
+    ['tests/fixtures/file1.json', 'tests/fixtures/file3.yml'],
+)
+@pytest.mark.parametrize(
+    'filepath_2',
+    ['tests/fixtures/file2.json', 'tests/fixtures/file4.yml'],
+)
+def test_generate_diff_with_simple_file(filepath_1, filepath_2):
     with open('tests/fixtures/simple_result.txt', 'r') as file:
         result = file.read()
-    assert generate_diff('tests/fixtures/file1.json',
-                         'tests/fixtures/file2.json') == result
+    assert generate_diff(filepath_1, filepath_2) == result
 
 
-def test_generate_diff_with_yml():
-    with open('tests/fixtures/simple_result.txt', 'r') as file:
-        result = file.read()
-    assert generate_diff('tests/fixtures/file3.yml',
-                         'tests/fixtures/file4.yml') == result
-
-
-def test_generate_diff_with_complex_json():
+@pytest.mark.parametrize(
+    'filepath_1',
+    ['tests/fixtures/complex_file1.json', 'tests/fixtures/complex_file3.yml'],
+)
+@pytest.mark.parametrize(
+    'filepath_2',
+    ['tests/fixtures/complex_file2.json', 'tests/fixtures/complex_file4.yml'],
+)
+def test_generate_diff_with_complex_file(filepath_1, filepath_2):
     with open('tests/fixtures/complex_result.txt', 'r') as file:
         result = file.read()
-    assert generate_diff('tests/fixtures/complex_file1.json',
-                         'tests/fixtures/complex_file2.json') == result
-
-
-def test_generate_diff_with_complex_yml():
-    with open('tests/fixtures/complex_result.txt', 'r') as file:
-        result = file.read()
-    assert generate_diff('tests/fixtures/complex_file3.yml',
-                         'tests/fixtures/complex_file4.yml') == result
+    assert generate_diff(filepath_1, filepath_2) == result
 
 
 def test_generate_diff_with_plain_formate():

@@ -3,31 +3,25 @@ OFFSET_LEFT = 2
 
 
 def get_status(diff, key):
-    if 'children' in diff['children'][key]:
-        return 'node'
-    value_1 = diff['children'][key]['old_value']
-    value_2 = diff['children'][key]['new_value']
-    if value_1 == '|Empty|':
-        status = 'added'
-    elif value_2 == '|Empty|':
-        status = 'deleted'
-    elif value_1 == value_2:
-        status = 'correct'
-    elif value_1 != value_2:
-        status = 'changed'
-    return status
+    return diff['children'][key]['status']
 
 
 def get_keys(diff):
-    return diff['sorted_keys']
+    return list(diff['children'])
 
 
 def get_value(diff, key):
-    if get_status(diff, key) == 'node':
-        return diff['children'][key]
-    else:
+    if get_status(diff, key) == 'correct':
+        return diff['children'][key]['old_value']
+    elif get_status(diff, key) == 'changed':
         return (diff['children'][key]['old_value'],
                 diff['children'][key]['new_value'])
+    elif get_status(diff, key) == 'added':
+        return diff['children'][key]['new_value']
+    elif get_status(diff, key) == 'deleted':
+        return diff['children'][key]['old_value']
+    elif get_status(diff, key) == 'node':
+        return diff['children'][key]
 
 
 def make_correct(data, depth):
@@ -47,15 +41,19 @@ def make_correct(data, depth):
     return f' {data}\n' if data is not None else ' null\n'
 
 
-def get_string(status, old_value, new_value, key, indent, depth):
+def get_string(status, diff, key, indent, depth):
     if status == 'correct':
+        old_value = get_value(diff, key)
         return f'{indent}  {key}:{make_correct(old_value, depth)}'
     elif status == 'changed':
+        old_value, new_value = get_value(diff, key)
         return f'{indent}- {key}:{make_correct(old_value, depth)}'\
                f'{indent}+ {key}:{make_correct(new_value, depth)}'
     elif status == 'deleted':
+        old_value = get_value(diff, key)
         return f'{indent}- {key}:{make_correct(old_value, depth)}'
     elif status == 'added':
+        new_value = get_value(diff, key)
         return f'{indent}+ {key}:{make_correct(new_value, depth)}'
 
 
@@ -68,14 +66,12 @@ def stylish(diff):
         indent = count_space * ' '
         for key in keys:
             status = get_status(diff, key)
-            old_value, new_value = get_value(diff, key)
             if status == 'node':
                 children = get_value(diff, key)
                 result += f'{indent}  {key}: {"{"}\n'
                 result += walk(children, depth + 1)
                 continue
-            result += get_string(status, old_value, new_value,
-                                 key, indent, depth)
+            result += get_string(status, diff, key, indent, depth)
         return result + ('}' if depth == 1
                          else f'{(count_space - 2) * " "}{"}"}\n')
 

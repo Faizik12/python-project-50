@@ -1,72 +1,55 @@
 {
-    "sorted_keys": [
-        "common",
-        "group1",
-        "group2",
-        "group3"
-    ],
+    "status": "node",
     "children": {
         "common": {
-            "sorted_keys": [
-                "follow",
-                "setting1",
-                "setting2",
-                "setting3",
-                "setting4",
-                "setting5",
-                "setting6"
-            ],
+            "status": "node",
             "children": {
                 "follow": {
-                    "old_value": "|Empty|",
+                    "status": "added",
                     "new_value": false
                 },
                 "setting1": {
-                    "old_value": "Value 1",
-                    "new_value": "Value 1"
+                    "status": "correct",
+                    "old_value": "Value 1"
                 },
                 "setting2": {
-                    "old_value": 200,
-                    "new_value": "|Empty|"
+                    "status": "deleted",
+                    "old_value": 200
                 },
                 "setting3": {
+                    "status": "changed",
                     "old_value": true,
                     "new_value": null
                 },
                 "setting4": {
-                    "old_value": "|Empty|",
+                    "status": "added",
                     "new_value": "blah blah"
                 },
                 "setting5": {
-                    "old_value": "|Empty|",
+                    "status": "added",
                     "new_value": {
                         "key5": "value5"
                     }
                 },
                 "setting6": {
-                    "sorted_keys": [
-                        "doge",
-                        "key",
-                        "ops"
-                    ],
+                    "status": "node",
                     "children": {
                         "doge": {
-                            "sorted_keys": [
-                                "wow"
-                            ],
+                            "status": "node",
                             "children": {
                                 "wow": {
+                                    "status": "changed",
                                     "old_value": "",
                                     "new_value": "so much"
                                 }
                             }
                         },
                         "key": {
-                            "old_value": "value",
-                            "new_value": "value"
+                            "status": "correct",
+                            "old_value": "value"
                         },
                         "ops": {
-                            "old_value": "|Empty|",
+                            "status": "added",
                             "new_value": "vops"
                         }
                     }
@@ -74,21 +57,19 @@
             }
         },
         "group1": {
-            "sorted_keys": [
-                "baz",
-                "foo",
-                "nest"
-            ],
+            "status": "node",
             "children": {
                 "baz": {
+                    "status": "changed",
                     "old_value": "bas",
                     "new_value": "bars"
                 },
                 "foo": {
-                    "old_value": "bar",
-                    "new_value": "bar"
+                    "status": "correct",
+                    "old_value": "bar"
                 },
                 "nest": {
+                    "status": "changed",
                     "old_value": {
                         "key": "value"
                     },
@@ -97,16 +78,16 @@
             }
         },
         "group2": {
+            "status": "deleted",
             "old_value": {
                 "abc": 12345,
                 "deep": {
                     "id": 45
                 }
-            },
-            "new_value": "|Empty|"
+            }
         },
         "group3": {
-            "old_value": "|Empty|",
+            "status": "added",
             "new_value": {
                 "deep": {
                     "id": {
