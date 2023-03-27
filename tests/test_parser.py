@@ -15,7 +15,7 @@ import pytest
      ('tests/fixtures/complex_file1.json', 'tests/fixtures/complex_file2.json',
       'tests/fixtures/plain_result.txt', 'plain'),
      ('tests/fixtures/complex_file1.json', 'tests/fixtures/complex_file2.json',
-      'tests/fixtures/json_result.json', 'json'),],)
+      'tests/fixtures/json_result.json', 'json')])
 def test_generate_diff_with_simple_file(filepath_1, filepath_2,
                                         filepath_3, formatter):
     with open(filepath_3, 'r') as file:
